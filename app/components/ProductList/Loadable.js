@@ -1,6 +1,6 @@
 /**
  *
- * Asynchronously loads the component for ProductListContainer
+ * Asynchronously loads the component for ProductList
  *
  */
 

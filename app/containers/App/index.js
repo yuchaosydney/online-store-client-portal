@@ -14,14 +14,14 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import ProductList from 'containers/ProductList';
+import ProductListContainer from 'containers/ProductListContainer';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
 export default function App() {
   return (
     <div>
       <Switch>
-        <Route exact path="/" component={ProductList} />
+        <Route exact path="/" component={ProductListContainer} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>
