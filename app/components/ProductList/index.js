@@ -13,12 +13,8 @@ import Product from '../Product';
 import styles from './styles.css';
 
 function ProductList({ products }) {
-
   const productNodes = products.map(product => (
-    <Product 
-      key={product._id}
-      product={product}
-    />
+    <Product key={product._id} product={product} />
   ));
 
   return (
@@ -30,11 +26,13 @@ function ProductList({ products }) {
 }
 
 ProductList.propTypes = {
-  products: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    images: PropTypes.array.isRequired
-  }))
+  products: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+      images: PropTypes.array.isRequired,
+    }),
+  ),
 };
 
 export default ProductList;

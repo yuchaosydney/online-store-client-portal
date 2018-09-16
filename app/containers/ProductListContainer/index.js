@@ -20,7 +20,6 @@ import { requestProducts } from './actions';
 
 /* eslint-disable react/prefer-stateless-function */
 export class ProductListContainer extends React.Component {
-  
   componentWillMount() {
     this.props.requestProducts();
   }

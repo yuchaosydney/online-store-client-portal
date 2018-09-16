@@ -8,7 +8,7 @@ import { fromJS } from 'immutable';
 import { REQUEST_PRODUCTS_SUCCEEDED } from './constants';
 
 export const initialState = fromJS({
-  products: []
+  products: [],
 });
 
 function productListContainerReducer(state = initialState, action) {

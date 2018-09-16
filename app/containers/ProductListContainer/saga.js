@@ -22,4 +22,3 @@ function* fetchProducts() {
 export default function* fetchProductsSaga() {
   yield* takeLatest(REQUEST_PRODUCTS, fetchProducts);
 }
-
