@@ -1,15 +1,13 @@
 import { call, put } from 'redux-saga/effects';
 
-import {httpCall} from '../share/http';
+import { httpCall } from '../share/http';
 
 import { requestProductsSucceded, requestProductsFail } from './actions';
 import { takeLatest } from 'redux-saga';
 import { REQUEST_PRODUCTS } from './constants';
 
-
 function fetchProductsFromServer() {
-  return httpCall('products')
-    .then(response => response.json());
+  return httpCall('api/product/all').then(response => response.json());
 }
 
 function* fetchProducts() {
@@ -25,6 +23,3 @@ export default function* fetchProductsSaga() {
   yield* takeLatest(REQUEST_PRODUCTS, fetchProducts);
 }
 
-// export default [
-//   fetchProductsSaga
-// ]

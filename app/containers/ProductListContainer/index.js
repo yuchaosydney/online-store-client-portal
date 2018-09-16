@@ -20,28 +20,25 @@ import { requestProducts } from './actions';
 
 /* eslint-disable react/prefer-stateless-function */
 export class ProductListContainer extends React.Component {
-
+  
   componentWillMount() {
     this.props.requestProducts();
   }
-  
+
   render() {
     return <ProductList {...this.props} />;
   }
-
 }
 
 ProductListContainer.propTypes = {
-  requestProducts: PropTypes.func.isRequired
+  requestProducts: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = createStructuredSelector({
-  productlistcontainer: makeSelectProductListContainer(),
-});
+const mapStateToProps = makeSelectProductListContainer();
 
 function mapDispatchToProps(dispatch) {
   return {
-    requestProducts: () => dispatch(requestProducts())
+    requestProducts: () => dispatch(requestProducts()),
   };
 }
 

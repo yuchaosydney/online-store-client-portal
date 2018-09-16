@@ -5,11 +5,11 @@
  */
 
 import { fromJS } from 'immutable';
-import {
-  REQUEST_PRODUCTS_SUCCEEDED
-} from './constants';
+import { REQUEST_PRODUCTS_SUCCEEDED } from './constants';
 
-export const initialState = fromJS({});
+export const initialState = fromJS({
+  products: []
+});
 
 function productListContainerReducer(state = initialState, action) {
   switch (action.type) {

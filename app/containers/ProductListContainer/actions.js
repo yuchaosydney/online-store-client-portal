@@ -4,10 +4,10 @@
  *
  */
 
-import { 
+import {
   REQUEST_PRODUCTS,
   REQUEST_PRODUCTS_SUCCEEDED,
-  REQUEST_PRODUCTS_FAIL
+  REQUEST_PRODUCTS_FAIL,
 } from './constants';
 
 export function requestProducts() {
@@ -19,14 +19,13 @@ export function requestProducts() {
 export function requestProductsSucceded(products) {
   return {
     type: REQUEST_PRODUCTS_SUCCEEDED,
-    products
-  }
+    products,
+  };
 }
 
 export function requestProductsFail(message) {
   return {
     type: REQUEST_PRODUCTS_FAIL,
-    message
-  }
+    message,
+  };
 }
-
