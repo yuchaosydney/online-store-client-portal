@@ -11,12 +11,11 @@ import PropTypes from 'prop-types';
 import styles from './styles.css';
 
 function Product({ product }) {
-  // console.log('--------style---------', style);
   return (
     <div className={styles.product}>
-      {product.name}
-      {product.price}
-      {product.images}
+      <img className={styles.image} src='https://www.claires.com/dw/image/v2/BBTK_PRD/on/demandware.static/-/Sites-master-catalog/default/dw926c349a/images/hi-res/94199_1.jpg?sw=2000&sh=2000&sm=fit'/>
+      <p className={styles.text}>{product.name}</p>
+      <p className={styles.text}>${product.price}</p>
     </div>
   );
 }

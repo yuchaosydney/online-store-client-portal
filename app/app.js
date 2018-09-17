@@ -10,6 +10,7 @@ import 'babel-polyfill';
 
 // Import all the third party stuff
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
