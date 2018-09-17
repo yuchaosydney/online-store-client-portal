@@ -8,9 +8,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 // import styled from 'styled-components';
 
+import styles from './styles.css';
+
 function Product({ product }) {
+  // console.log('--------style---------', style);
   return (
-    <div>
+    <div className={styles.product}>
       {product.name}
       {product.price}
       {product.images}
