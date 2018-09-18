@@ -15,7 +15,7 @@ import makeSelectProductListContainer from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import ProductList from '../../components/ProductList';
-import { requestProducts } from './actions';
+import { requestProducts, toggleProduct } from './actions';
 
 /* eslint-disable react/prefer-stateless-function */
 export class ProductListContainer extends React.Component {
@@ -37,6 +37,7 @@ const mapStateToProps = makeSelectProductListContainer();
 function mapDispatchToProps(dispatch) {
   return {
     requestProducts: () => dispatch(requestProducts()),
+    toggleProduct: product => dispatch(toggleProduct(product))
   };
 }
 

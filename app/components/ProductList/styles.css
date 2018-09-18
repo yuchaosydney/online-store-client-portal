@@ -1,9 +1,14 @@
 .productList { /* stylelint-disable */
-  background: green;
+  margin-top: 30px;
+  background: white;
 }
 
 .icon {
   color: #0000ff;
+}
+
+.row {
+  margin-bottom: 30px;
 }
 
 .column {

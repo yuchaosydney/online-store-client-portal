@@ -6,7 +6,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 
 import { Container, Row, Col } from 'reactstrap';
 
@@ -14,8 +14,8 @@ import Product from '../Product';
 
 import styles from './styles.css';
 
-function ProductList({ products }) {
-  
+function ProductList({ products, loading, loaded, toggleProduct }) {
+
   const COLUMN_NUM = 4;
   const formattedProductList = [];
 
@@ -30,17 +30,17 @@ function ProductList({ products }) {
   }
 
   const productNodes = products => products && products.length ? products.map(product => (
-    <Col xs="3" className={styles.column} key={product._id}><Product product={product} /></Col>
+    <Col xs="3" className={styles.column} key={product._id}><Product product={product} toggleProduct={toggleProduct} /></Col>
   )) : [];
 
   const productListNodes = formattedProductList.map((list, index) => (
-    <Row key={index}>
+    <Row className={styles.row} key={index}>
       {productNodes(list)}
     </Row>
   ));
 
   return (
-    <div className={styles.ProductList}>
+    <div className={styles.productList}>
       <Container>
         {productListNodes}
       </Container>
@@ -56,6 +56,9 @@ ProductList.propTypes = {
       images: PropTypes.array.isRequired,
     }),
   ),
+  loading: PropTypes.bool.isRequired,
+  loaded: PropTypes.bool.isRequired,
+  toggleProduct: PropTypes.func.isRequired
 };
 
 export default ProductList;

@@ -8,6 +8,8 @@ import {
   REQUEST_PRODUCTS,
   REQUEST_PRODUCTS_SUCCEEDED,
   REQUEST_PRODUCTS_FAIL,
+  TOGGLE_PRODUCT,
+  UNTOGGLE_PRODUCT
 } from './constants';
 
 export function requestProducts() {
@@ -27,5 +29,12 @@ export function requestProductsFail(message) {
   return {
     type: REQUEST_PRODUCTS_FAIL,
     message,
+  };
+}
+
+export function toggleProduct(product) {
+  return {
+    type: TOGGLE_PRODUCT,
+    product,
   };
 }
