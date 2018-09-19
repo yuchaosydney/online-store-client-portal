@@ -15,7 +15,7 @@ export const initialState = fromJS({
   products: [],
   loading: false,
   loaded: false,
-  toggleProduct: null
+  toggledProduct: null
 });
 
 function productListContainerReducer(state = initialState, action) {
@@ -28,7 +28,7 @@ function productListContainerReducer(state = initialState, action) {
         .set('loading', false)
         .set('loaded', true);
     case TOGGLE_PRODUCT:
-      return state.get('toggleProduct') ? null : state.set('toggleProduct', action.product);
+      return state.get('toggledProduct') ? state.set('toggledProduct', null) : state.set('toggledProduct', action.product);
     default:
       return state;
   }

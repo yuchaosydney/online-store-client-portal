@@ -11,10 +11,11 @@ import PropTypes from 'prop-types';
 import { Container, Row, Col } from 'reactstrap';
 
 import Product from '../Product';
+import ProductModal from '../ProductModal';
 
 import styles from './styles.css';
 
-function ProductList({ products, loading, loaded, toggleProduct }) {
+function ProductList({ products, loading, loaded, toggleProduct, toggledProduct }) {
 
   const COLUMN_NUM = 4;
   const formattedProductList = [];
@@ -44,6 +45,9 @@ function ProductList({ products, loading, loaded, toggleProduct }) {
       <Container>
         {productListNodes}
       </Container>
+      {!!toggledProduct &&
+        <ProductModal toggledProduct={toggledProduct} toggleProduct={toggleProduct} />
+      }
     </div>
   );
 }
@@ -58,7 +62,12 @@ ProductList.propTypes = {
   ),
   loading: PropTypes.bool.isRequired,
   loaded: PropTypes.bool.isRequired,
-  toggleProduct: PropTypes.func.isRequired
+  toggleProduct: PropTypes.func.isRequired,
+  toggledProduct: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    images: PropTypes.array.isRequired,
+  })
 };
 
 export default ProductList;

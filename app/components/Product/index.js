@@ -6,7 +6,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button } from 'reactstrap';
 // import styled from 'styled-components';
 
 import styles from './styles.css';
