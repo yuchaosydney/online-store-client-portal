@@ -16,6 +16,9 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
 import 'sanitize.css/sanitize.css';
+import { ThemeProvider } from 'styled-components';
+
+import GlobalComponent from './components/GlobalComponent';
 
 // Import root app
 import App from 'containers/App';
@@ -43,12 +46,17 @@ const history = createHistory();
 const store = configureStore(initialState, history);
 const MOUNT_NODE = document.getElementById('app');
 
+const theme = {
+  bg: "red"
+};
+
 const render = messages => {
   ReactDOM.render(
     <Provider store={store}>
       <LanguageProvider messages={messages}>
         <ConnectedRouter history={history}>
-          <App />
+          <GlobalComponent theme={theme} children={<App />}>
+          </GlobalComponent>
         </ConnectedRouter>
       </LanguageProvider>
     </Provider>,
