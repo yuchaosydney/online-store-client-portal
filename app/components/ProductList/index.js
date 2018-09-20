@@ -15,8 +15,7 @@ import ProductModal from '../ProductModal';
 
 import styles from './styles.css';
 
-function ProductList({ products, loading, loaded, toggleProduct, toggledProduct }) {
-
+function ProductList({ products, toggleProduct, toggledProduct }) {
   const COLUMN_NUM = 4;
   const formattedProductList = [];
 
@@ -30,9 +29,14 @@ function ProductList({ products, loading, loaded, toggleProduct, toggledProduct 
     });
   }
 
-  const productNodes = products => products && products.length ? products.map(product => (
-    <Col xs="3" className={styles.column} key={product._id}><Product product={product} toggleProduct={toggleProduct} /></Col>
-  )) : [];
+  const productNodes = productList =>
+    productList && productList.length
+      ? productList.map(product => (
+        <Col xs="3" className={styles.column} key={product._id}>
+          <Product product={product} toggleProduct={toggleProduct} />
+        </Col>
+      ))
+      : [];
 
   const productListNodes = formattedProductList.map((list, index) => (
     <Row className={styles.row} key={index}>
@@ -42,12 +46,13 @@ function ProductList({ products, loading, loaded, toggleProduct, toggledProduct 
 
   return (
     <div className={styles.productList}>
-      <Container>
-        {productListNodes}
-      </Container>
-      {!!toggledProduct &&
-        <ProductModal toggledProduct={toggledProduct} toggleProduct={toggleProduct} />
-      }
+      <Container>{productListNodes}</Container>
+      {!!toggledProduct && (
+        <ProductModal
+          toggledProduct={toggledProduct}
+          toggleProduct={toggleProduct}
+        />
+      )}
     </div>
   );
 }
@@ -67,7 +72,7 @@ ProductList.propTypes = {
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     images: PropTypes.array.isRequired,
-  })
+  }),
 };
 
 export default ProductList;

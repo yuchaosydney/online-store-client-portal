@@ -38,7 +38,7 @@ import configureStore from './configureStore';
 import { translationMessages } from './i18n';
 
 // Import CSS reset and Global Styles
-import './global-styles';
+// import './global-styles';
 
 // Create redux store with history
 const initialState = {};
@@ -47,17 +47,20 @@ const store = configureStore(initialState, history);
 const MOUNT_NODE = document.getElementById('app');
 
 const theme = {
-  bg: "red"
+  bg: '#fff',
 };
 
 const render = messages => {
   ReactDOM.render(
     <Provider store={store}>
       <LanguageProvider messages={messages}>
-        <ConnectedRouter history={history}>
-          <GlobalComponent theme={theme} children={<App />}>
+        <ThemeProvider theme={theme}>
+          <GlobalComponent>
+            <ConnectedRouter history={history}>
+              <App />
+            </ConnectedRouter>
           </GlobalComponent>
-        </ConnectedRouter>
+        </ThemeProvider>
       </LanguageProvider>
     </Provider>,
     MOUNT_NODE,
