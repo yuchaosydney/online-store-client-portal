@@ -37,7 +37,7 @@ const mapStateToProps = makeSelectProductListContainer();
 function mapDispatchToProps(dispatch) {
   return {
     requestProducts: () => dispatch(requestProducts()),
-    toggleProduct: product => dispatch(toggleProduct(product))
+    toggleProduct: product => dispatch(toggleProduct(product)),
   };
 }
 

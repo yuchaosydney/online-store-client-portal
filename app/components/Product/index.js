@@ -7,7 +7,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StyledButton } from '../styled/index';
-// import styled from 'styled-components';
 
 import styles from './styles.css';
 
@@ -27,6 +26,7 @@ class Product extends React.Component {
     return (
       <div className={styles.product}>
         <img
+          alt={this.props.product.name}
           className={styles.image}
           src="https://www.claires.com/dw/image/v2/BBTK_PRD/on/demandware.static/-/Sites-master-catalog/default/dw926c349a/images/hi-res/94199_1.jpg?sw=2000&sh=2000&sm=fit"
         />

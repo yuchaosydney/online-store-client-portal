@@ -10,15 +10,20 @@ import 'babel-polyfill';
 
 // Import all the third party stuff
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { ThemeProvider } from 'styled-components';
+
 import { ConnectedRouter } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
 import 'sanitize.css/sanitize.css';
-import { ThemeProvider } from 'styled-components';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-import GlobalComponent from './components/GlobalComponent';
+// Load the favicon and the .htaccess file
+/* eslint-disable import/no-unresolved, import/extensions */
+import '!file-loader?name=[name].[ext]!./images/favicon.ico';
+import 'file-loader?name=[name].[ext]!./.htaccess';
+/* eslint-enable import/no-unresolved, import/extensions */
 
 // Import root app
 import App from 'containers/App';
@@ -26,11 +31,7 @@ import App from 'containers/App';
 // Import Language Provider
 import LanguageProvider from 'containers/LanguageProvider';
 
-// Load the favicon and the .htaccess file
-/* eslint-disable import/no-unresolved, import/extensions */
-import '!file-loader?name=[name].[ext]!./images/favicon.ico';
-import 'file-loader?name=[name].[ext]!./.htaccess';
-/* eslint-enable import/no-unresolved, import/extensions */
+import GlobalComponent from './components/GlobalComponent';
 
 import configureStore from './configureStore';
 

@@ -9,7 +9,6 @@ import {
   REQUEST_PRODUCTS_SUCCEEDED,
   REQUEST_PRODUCTS_FAIL,
   TOGGLE_PRODUCT,
-  UNTOGGLE_PRODUCT
 } from './constants';
 
 export function requestProducts() {

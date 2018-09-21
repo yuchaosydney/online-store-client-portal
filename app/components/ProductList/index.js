@@ -6,7 +6,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-// import styled from 'styled-components';
 
 import { Container, Row, Col } from 'reactstrap';
 
@@ -32,6 +31,7 @@ function ProductList({ products, toggleProduct, toggledProduct }) {
   const productNodes = productList =>
     productList && productList.length
       ? productList.map(product => (
+        /*eslint-disable */
         <Col xs="3" className={styles.column} key={product._id}>
           <Product product={product} toggleProduct={toggleProduct} />
         </Col>
@@ -47,12 +47,10 @@ function ProductList({ products, toggleProduct, toggledProduct }) {
   return (
     <div className={styles.productList}>
       <Container>{productListNodes}</Container>
-      {!!toggledProduct && (
-        <ProductModal
-          toggledProduct={toggledProduct}
-          toggleProduct={toggleProduct}
-        />
-      )}
+      <ProductModal
+        toggledProduct={toggledProduct}
+        toggleProduct={toggleProduct}
+      />
     </div>
   );
 }

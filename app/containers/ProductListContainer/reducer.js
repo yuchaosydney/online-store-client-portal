@@ -5,17 +5,17 @@
  */
 
 import { fromJS } from 'immutable';
-import { 
+import {
   REQUEST_PRODUCTS_SUCCEEDED,
   REQUEST_PRODUCTS,
-  TOGGLE_PRODUCT
+  TOGGLE_PRODUCT,
 } from './constants';
 
 export const initialState = fromJS({
   products: [],
   loading: false,
   loaded: false,
-  toggledProduct: null
+  toggledProduct: null,
 });
 
 function productListContainerReducer(state = initialState, action) {
@@ -28,7 +28,9 @@ function productListContainerReducer(state = initialState, action) {
         .set('loading', false)
         .set('loaded', true);
     case TOGGLE_PRODUCT:
-      return state.get('toggledProduct') ? state.set('toggledProduct', null) : state.set('toggledProduct', action.product);
+      return state.get('toggledProduct')
+        ? state.set('toggledProduct', null)
+        : state.set('toggledProduct', action.product);
     default:
       return state;
   }

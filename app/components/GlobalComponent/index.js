@@ -2,6 +2,7 @@ import { Children } from 'react';
 import { withTheme, injectGlobal } from 'styled-components';
 
 const GlobalComponent = ({ theme, children }) => {
+  /*eslint-disable */
   injectGlobal`
     html,
     body {
@@ -30,6 +31,7 @@ const GlobalComponent = ({ theme, children }) => {
       line-height: 1.5em;
     }
   `;
+
   return Children.only(children);
 };
 

@@ -47,10 +47,10 @@ module.exports = options => ({
               modules: true,
               sourceMap: true,
               localIdentName: '[path][name]__[local]--[hash:base64:5]',
-              camelCase: true
-            }
-          }
-        ]
+              camelCase: true,
+            },
+          },
+        ],
       },
       {
         // Preprocess 3rd party .css files located in node_modules
