@@ -6,7 +6,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-// import styled from 'styled-components';
+
+import { Grid, Row, Col } from 'react-bootstrap';
 
 import Product from '../Product';
 
@@ -14,13 +15,17 @@ import styles from './styles.css';
 
 function ProductList({ products }) {
   const productNodes = products.map(product => (
-    <Product key={product._id} product={product} />
+    <Col xs={6} md={4} key={product._id}>
+      <Product product={product} />
+    </Col>
   ));
 
   return (
     <div className={styles.ProductList}>
       <h1 className={styles.icon}>Product List from component</h1>
-      {productNodes}
+      <Grid>
+        <Row>{productNodes}</Row>
+      </Grid>
     </div>
   );
 }
