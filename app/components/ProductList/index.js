@@ -7,25 +7,52 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col } from 'reactstrap';
 
 import Product from '../Product';
+import ProductModal from '../ProductModal';
 
 import styles from './styles.css';
 
-function ProductList({ products }) {
-  const productNodes = products.map(product => (
-    <Col xs={6} md={4} key={product._id}>
-      <Product product={product} />
-    </Col>
+function ProductList({ products, toggleProduct, toggledProduct }) {
+  const COLUMN_NUM = 4;
+  const formattedProductList = [];
+
+  if (products.length) {
+    products.forEach((product, index) => {
+      const listIndex = Math.floor(index / COLUMN_NUM);
+      if (formattedProductList[listIndex] === undefined) {
+        formattedProductList[listIndex] = [];
+      }
+      formattedProductList[listIndex].push(product);
+    });
+  }
+
+  const productNodes = productList => {
+    console.log('------------', toggleProduct);
+    return productList && productList.length
+    ? productList.map(product => (
+      /*eslint-disable */
+      <Col xs="3" className={styles.column} key={product._id}>
+        <Product product={product} toggleProduct={toggleProduct} />
+      </Col>
+    ))
+    : [];
+  }
+
+  const productListNodes = formattedProductList.map((list, index) => (
+    <Row className={styles.row} key={index}>
+      {productNodes(list)}
+    </Row>
   ));
 
   return (
-    <div className={styles.ProductList}>
-      <h1 className={styles.icon}>Product List from component</h1>
-      <Grid>
-        <Row>{productNodes}</Row>
-      </Grid>
+    <div className={styles.productList}>
+      <Container>{productListNodes}</Container>
+      <ProductModal
+        toggledProduct={toggledProduct}
+        toggleProduct={toggleProduct}
+      />
     </div>
   );
 }
@@ -38,6 +65,14 @@ ProductList.propTypes = {
       images: PropTypes.array.isRequired,
     }),
   ),
+  loading: PropTypes.bool.isRequired,
+  loaded: PropTypes.bool.isRequired,
+  toggleProduct: PropTypes.func.isRequired,
+  toggledProduct: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    images: PropTypes.array.isRequired,
+  }),
 };
 
 export default ProductList;

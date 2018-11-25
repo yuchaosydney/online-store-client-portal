@@ -1,9 +1,9 @@
 import { call, put } from 'redux-saga/effects';
+import { takeLatest } from 'redux-saga';
 
 import { httpCall } from '../share/http';
 
 import { requestProductsSucceded, requestProductsFail } from './actions';
-import { takeLatest } from 'redux-saga';
 import { REQUEST_PRODUCTS } from './constants';
 
 function fetchProductsFromServer() {

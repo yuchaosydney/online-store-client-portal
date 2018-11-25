@@ -1,7 +1,17 @@
 .productList { /* stylelint-disable */
-
+  margin-top: 30px;
+  background: transparent;
 }
 
 .icon {
-  color: #fff;
+  color: #0000ff;
+}
+
+.row {
+  margin-bottom: 30px;
+}
+
+.column {
+  display: flex;
+  justify-content: center;
 }

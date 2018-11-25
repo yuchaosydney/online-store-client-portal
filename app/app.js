@@ -12,15 +12,12 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { ThemeProvider } from 'styled-components';
+
 import { ConnectedRouter } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
 import 'sanitize.css/sanitize.css';
-
-// Import root app
-import App from 'containers/App';
-
-// Import Language Provider
-import LanguageProvider from 'containers/LanguageProvider';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Load the favicon and the .htaccess file
 /* eslint-disable import/no-unresolved, import/extensions */
@@ -28,13 +25,21 @@ import '!file-loader?name=[name].[ext]!./images/favicon.ico';
 import 'file-loader?name=[name].[ext]!./.htaccess';
 /* eslint-enable import/no-unresolved, import/extensions */
 
+// Import root app
+import App from 'containers/App';
+
+// Import Language Provider
+import LanguageProvider from 'containers/LanguageProvider';
+
+import GlobalComponent from './components/GlobalComponent';
+
 import configureStore from './configureStore';
 
 // Import i18n messages
 import { translationMessages } from './i18n';
 
 // Import CSS reset and Global Styles
-import './global-styles';
+// import './global-styles';
 
 // Create redux store with history
 const initialState = {};
@@ -42,13 +47,21 @@ const history = createHistory();
 const store = configureStore(initialState, history);
 const MOUNT_NODE = document.getElementById('app');
 
+const theme = {
+  bg: '#fff',
+};
+
 const render = messages => {
   ReactDOM.render(
     <Provider store={store}>
       <LanguageProvider messages={messages}>
-        <ConnectedRouter history={history}>
-          <App />
-        </ConnectedRouter>
+        <ThemeProvider theme={theme}>
+          <GlobalComponent>
+            <ConnectedRouter history={history}>
+              <App />
+            </ConnectedRouter>
+          </GlobalComponent>
+        </ThemeProvider>
       </LanguageProvider>
     </Provider>,
     MOUNT_NODE,
